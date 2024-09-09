@@ -3,7 +3,7 @@ import { createTheme } from '@mui/material/styles';
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#394900', // Verde Institucional
+      main: '#39A900', // Verde Institucional
     },
     secondary: {
       main: '#007832', // Color secundario
