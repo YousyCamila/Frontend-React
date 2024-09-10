@@ -1,12 +1,21 @@
-import React from 'react';
-import { Link as RouterLink } from 'react-router-dom';
+// Archivo: src/utils/textUtils.js
 
-const LinkBehavior = React.forwardRef((props, ref) => {
-  // Desestructura los props para excluir "button" y cualquier otro prop no necesario
-  const { button, ...restProps } = props;
+function normalizeText(input) {
+  const from = "áéíóúÁÉÍÓÚ";
+  const to = "aeiouAEIOU";
 
-  // Solo pasa los props que deberían ir a RouterLink
-  return <RouterLink ref={ref} {...restProps} />;
-});
+  // Crear un arreglo de caracteres para la transformación
+  const mapping = {};
 
-export default LinkBehavior;
+  for (let i = 0; i < from.length; i++) {
+      mapping[from.charAt(i)] = to.charAt(i);
+  }
+
+  // Reemplazar todos los caracteres especiales
+  const result = input.replace(/[^\s\w]/g, '')
+      .split('').map((char) => mapping[char] || char).join('').toLowerCase();
+
+  return result;
+}
+
+export default normalizeText;
