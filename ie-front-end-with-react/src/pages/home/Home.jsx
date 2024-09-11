@@ -46,8 +46,10 @@ const Home = () => {
   };
 
   const handleImageError = (e) => {
-    e.target.src = "https://via.placeholder.com/150"; // Imagen por defecto
+    e.target.src = "https://taplink.st/a/6/9/2/7/955d28.png?2"; // Imagen por defecto
   };
+  
+  //https://via.placeholder.com/150
 
   // Función para manejar el clic en una tarjeta de curso
   const handleCardClick = (curso) => {

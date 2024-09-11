@@ -43,6 +43,7 @@ const Cursos = () => {
   const [openSnackbar, setOpenSnackbar] = useState(false);
 
   const defaultImage = "https://via.placeholder.com/50"; // URL de la imagen por defecto
+  
 
   useEffect(() => {
     fetchCursos();
@@ -50,8 +51,8 @@ const Cursos = () => {
 
   const fetchCursos = async () => {
     try {
-      const response = await fetch("https://localhost:3000/api/cursos");
-      if (!response.ok) throw new Error("Error al obtener cursos");
+      const response = await fetch('https://localhost:3000/api/cursos');
+      if (!response.ok) throw new Error('Error al obtener cursos');
       const data = await response.json();
       setCursos(data);
     } catch (error) {
@@ -92,10 +93,10 @@ const Cursos = () => {
 
   const handleCreateCurso = async () => {
     try {
-      const response = await fetch("https://localhost:3000/api/cursos", {
-        method: "POST",
+      const response = await fetch('https://localhost:3000/api/cursos', {
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify(formValues),
       });
@@ -104,9 +105,9 @@ const Cursos = () => {
         const nuevoCurso = await response.json();
         setCursos([...cursos, nuevoCurso]);
         setFormValues({
-          titulo: "",
-          descripcion: "",
-          imagen: "",
+          titulo: '',
+          descripcion: '',
+          imagen: '',
           alumnos: 0,
           calificacion: 0,
           estado: true,
