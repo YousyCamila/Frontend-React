@@ -158,13 +158,16 @@ const Usuarios = () => {
   };
 
   const handleAddCursosClick = async (usuario) => {
+    setSelectedUsuario(usuario)
     try {
-      const response = await fetch(`https://localhost:3000/api/usuarios/${usuario.email}/cursos`);
-      if (!response.ok) throw new Error('Error al obtener cursos del usuario');
+      const response = await fetch(
+        `https://localhost:3000/api/usuarios/${usuario._id}/cursos`
+      );
+      if (!response.ok) throw new Error("Error al obtener cursos del usuario");
       const cursosUsuario = await response.json();
-      setSelectedCursos(cursosUsuario.map(curso => curso.id)); // Preselecciona los cursos ya asociados
+      setSelectedCursos(cursosUsuario.map((curso) => curso._id)); // Preselecciona los cursos ya asociados
     } catch (error) {
-      handleError(error, 'Error al obtener cursos del usuario');
+      handleError(error, "Error al obtener cursos del usuario");
     }
     setOpenAddCursosDialog(true);
   };
